@@ -5,28 +5,40 @@ const Home: React.FC = () => {
   const { isLoading, isSuccess, error, data } = useCryptoData();
 
   return (
-    <main>
+    <main className="bg-stone-700 pt-10">
       <>
         {isLoading && <p>Loading ...</p>}
 
         {error && <p>Error</p>}
 
         {isSuccess && (
-          <main className="mt-10">
-            <h2 className="text-center text-3xl font-bold">Top 100</h2>
-            {data.map(
-              ({ id, name, symbol, image, current_price, market_cap_rank }) => (
-                <CryptoCard
-                  key={id}
-                  id={id}
-                  name={name}
-                  symbol={symbol}
-                  image={image}
-                  current_price={current_price}
-                  market_cap_rank={market_cap_rank}
-                />
-              )
-            )}
+          <main>
+            <h2 className="text-center text-emerald-400 text-3xl font-bold mb-10">
+              Top 100
+            </h2>
+            <ul className="max-w-[700px] mx-auto">
+              {data.map(
+                ({
+                  id,
+                  name,
+                  symbol,
+                  image,
+                  current_price,
+                  market_cap_rank,
+                }) => (
+                  <li key={id} className="mb-5">
+                    <CryptoCard
+                      id={id}
+                      name={name}
+                      symbol={symbol}
+                      image={image}
+                      current_price={current_price}
+                      market_cap_rank={market_cap_rank}
+                    />
+                  </li>
+                )
+              )}
+            </ul>
           </main>
         )}
       </>

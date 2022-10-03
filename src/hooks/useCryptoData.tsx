@@ -11,5 +11,5 @@ const fetchCryptoData = async (): Promise<ICrypto[]> => {
 };
 
 export const useCryptoData = (): UseQueryResult<ICrypto[]> => {
-  return useQuery(["productsByCategory"], () => fetchCryptoData());
+  return useQuery(["crypto"], () => fetchCryptoData());
 };

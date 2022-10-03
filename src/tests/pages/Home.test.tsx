@@ -1,3 +1,4 @@
+/* eslint-disable testing-library/prefer-screen-queries */
 import { screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 
@@ -24,7 +25,7 @@ describe("Home Page", () => {
   it("should renders some crypto items if there is no error during the fetch req", async () => {
     const { findAllByRole } = renderWithClient(<Home />);
 
-    // eslint-disable-next-line testing-library/prefer-screen-queries
+    expect(await findAllByRole("heading", { level: 3 })).toHaveLength(3);
     expect(await findAllByRole("img")).toHaveLength(3);
   });
 
@@ -35,9 +36,8 @@ describe("Home Page", () => {
       })
     );
 
-    const { findByText } = renderWithClient(<Home />);
+    const { findByText, findAllByRole } = renderWithClient(<Home />);
 
-    // eslint-disable-next-line testing-library/prefer-screen-queries
     expect(await findByText("Error")).toBeInTheDocument();
   });
 });
