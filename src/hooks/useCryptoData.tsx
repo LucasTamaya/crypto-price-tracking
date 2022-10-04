@@ -5,7 +5,9 @@ import { COINGECKO_API_URL } from "../constants/apiUrl";
 import { ICrypto } from "../types/crypto";
 
 const fetchCryptoData = async (): Promise<ICrypto[]> => {
-  const { data } = await axios.get(`${COINGECKO_API_URL}`);
+  const { data } = await axios.get(
+    `${COINGECKO_API_URL}/markets?vs_currency=usd`
+  );
 
   return data;
 };

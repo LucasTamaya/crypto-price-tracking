@@ -36,7 +36,7 @@ describe("Home Page", () => {
       })
     );
 
-    const { findByText, findAllByRole } = renderWithClient(<Home />);
+    const { findByText } = renderWithClient(<Home />);
 
     expect(await findByText("Error")).toBeInTheDocument();
   });

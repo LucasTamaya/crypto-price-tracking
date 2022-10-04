@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 import { ICrypto } from "../types/crypto";
 
 const CryptoCard: React.FC<ICrypto> = ({
@@ -9,7 +11,10 @@ const CryptoCard: React.FC<ICrypto> = ({
   market_cap_rank,
 }) => {
   return (
-    <div className="flex flex-row items-center justify-between border border-white rounded-xl py-5 px-3 cursor-pointer transition-transform hover:scale-105">
+    <Link
+      to={`/crypto/${id}`}
+      className="flex flex-row items-center justify-between border border-white rounded-xl py-5 px-3 cursor-pointer transition-transform hover:scale-105"
+    >
       <div className="flex flex-row items-center gap-x-3">
         <img src={image} className="w-8 h-8" alt={`${name}`} />
         <div className="flex flex-col justify-center">
@@ -23,7 +28,7 @@ const CryptoCard: React.FC<ICrypto> = ({
           <p className="text-gray-400 font-bold">#{market_cap_rank}</p>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 
