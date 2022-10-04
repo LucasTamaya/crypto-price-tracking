@@ -4,6 +4,8 @@ import { useParams } from "react-router-dom";
 import { useChartData } from "../hooks/useChartData";
 import LinearChart from "./LinearChart";
 import { IChartData } from "../types/chart";
+import { capitalizeFirstLetter } from "../utils/capitalizeFirstLetter";
+import ChartTime from "./ChartTime";
 
 const CryptoDetails: React.FC = () => {
   const [days, setDays] = useState<number>(1);
@@ -33,6 +35,9 @@ const CryptoDetails: React.FC = () => {
             label: "Price",
             data: prices,
             borderColor: "rgb(52 211 153)",
+            pointStyle: "line",
+            tension: 0.1,
+            pointBorderColor: "transparent",
           },
         ],
       });
@@ -40,13 +45,29 @@ const CryptoDetails: React.FC = () => {
   }, [isSuccess, data]);
 
   return (
-    <main>
+    <main className="w-full h-screen min-h-screen bg-stone-700 pt-10">
       <>
         {isLoading && <p>Loading ...</p>}
 
         {error && <p>Error</p>}
 
-        {isSuccess && chartData && <LinearChart data={chartData} />}
+        {isSuccess && chartData && (
+          <>
+            <h2 className="text-center text-emerald-400 text-3xl font-bold mb-10">
+              {capitalizeFirstLetter(id)}
+            </h2>
+
+            <div className="max-w-[1000px] mx-auto mb-2 flex flex-row items-center justify-between">
+              <div className="flex flex-row items-center gap-x-4 bg-slate-100/10 p-2 rounded-lg">
+                <p>Price</p>
+                <p>Market Data</p>
+              </div>
+              <ChartTime />
+            </div>
+
+            <LinearChart data={chartData} />
+          </>
+        )}
       </>
     </main>
   );

@@ -5,7 +5,7 @@ const Home: React.FC = () => {
   const { isLoading, isSuccess, error, data } = useCryptoData();
 
   return (
-    <main className="bg-stone-700 pt-10">
+    <main className="w-full h-full min-h-screen bg-stone-700 pt-10">
       <>
         {isLoading && <p>Loading ...</p>}
 

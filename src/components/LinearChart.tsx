@@ -13,18 +13,36 @@ interface Props {
   data: IChartData;
 }
 
-const tab = [1, 2, 3];
-
-console.log(tab);
-
-const newTab = tab.map((t) => t);
-
-console.log("newTab: ", newTab);
-
 const LinearChart: React.FC<Props> = ({ data }) => {
   return (
-    <div className="w-[700px]">
-      <Line data={data} />
+    <div className="max-w-[1000px] mx-auto">
+      <Line
+        data={data}
+        options={{
+          plugins: { tooltip: { enabled: false }, legend: { display: false } },
+        }}
+      />
+      {/* <Line
+        data={{
+          labels: ["A", "B", "C", "D"],
+          datasets: [
+            {
+              label: "Title",
+              data: [1, 5, 3, 4, 7],
+              backgroundColor: "green",
+              borderColor: "green",
+              pointBackgroundColor: "green",
+              pointStyle: "line",
+              borderWidth: 2,
+              pointBorderColor: "transparent",
+              tension: 0.1,
+            },
+          ],
+        }}
+        options={{
+          plugins: { tooltip: { enabled: false }, legend: { display: false } },
+        }}
+      /> */}
     </div>
   );
 };

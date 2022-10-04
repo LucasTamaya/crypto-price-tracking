@@ -10,8 +10,6 @@ const App: React.FC = () => {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
-        {/* <Route path="/" element={<LinearChart />} /> */}
-
         <Route path="/crypto/:id" element={<CryptoDetails />} />
       </Routes>
     </>
