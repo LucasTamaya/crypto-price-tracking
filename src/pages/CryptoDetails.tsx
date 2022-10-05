@@ -1,23 +1,31 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
+import ChartTimes from "../components/ChartTimes";
+import ChartTypes from "../components/ChartTypes";
+import LinearChart from "../components/LinearChart";
 import { useChartData } from "../hooks/useChartData";
-import LinearChart from "./LinearChart";
-import { IChartData } from "../types/chart";
+import { ChartDays, ChartType, IChartData } from "../types/chart";
 import { capitalizeFirstLetter } from "../utils/capitalizeFirstLetter";
-import ChartTime from "./ChartTime";
 
 const CryptoDetails: React.FC = () => {
-  const [days, setDays] = useState<number>(1);
+  const [chartDays, setChartDays] = useState<ChartDays>(1);
+  const [chartType, setChartType] = useState<ChartType>("prices");
   const [chartData, setChartData] = useState<IChartData | null>(null);
 
   const { id } = useParams();
 
-  const { isLoading, isSuccess, error, data, refetch } = useChartData(id, days);
+  const { isLoading, isSuccess, error, data, refetch } = useChartData(
+    id,
+    chartDays,
+    chartType
+  );
 
+  // refetch data if chartDays or chartType change
   useEffect(() => {
     refetch();
-  }, [days]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [chartDays, chartType]);
 
   useEffect(() => {
     if (isSuccess) {
@@ -62,11 +70,8 @@ const CryptoDetails: React.FC = () => {
             </h2>
 
             <div className="max-w-[1000px] mx-auto mb-2 flex flex-row items-center justify-between">
-              <div className="flex flex-row items-center gap-x-4 bg-slate-100/10 p-2 rounded-lg">
-                <p>Price</p>
-                <p>Market Data</p>
-              </div>
-              <ChartTime days={days} setDays={setDays} />
+              <ChartTypes chartType={chartType} setChartType={setChartType} />
+              <ChartTimes chartDays={chartDays} setChartDays={setChartDays} />
             </div>
 
             <LinearChart data={chartData} />

@@ -2,7 +2,7 @@ import { Route, Routes } from "react-router-dom";
 
 import Home from "./pages/Home";
 import Header from "./components/common/Header";
-import CryptoDetails from "./components/CryptoDetails";
+import CryptoDetails from "./pages/CryptoDetails";
 
 const App: React.FC = () => {
   return (

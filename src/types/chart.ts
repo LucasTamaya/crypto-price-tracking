@@ -11,3 +11,7 @@ export interface IChartData {
     }
   ];
 }
+
+export type ChartType = "prices" | "market_caps" | "total_volumes";
+
+export type ChartDays = 1 | 7 | 30;
