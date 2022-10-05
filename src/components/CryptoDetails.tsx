@@ -13,7 +13,11 @@ const CryptoDetails: React.FC = () => {
 
   const { id } = useParams();
 
-  const { isLoading, isSuccess, error, data } = useChartData(id, days);
+  const { isLoading, isSuccess, error, data, refetch } = useChartData(id, days);
+
+  useEffect(() => {
+    refetch();
+  }, [days]);
 
   useEffect(() => {
     if (isSuccess) {
@@ -62,7 +66,7 @@ const CryptoDetails: React.FC = () => {
                 <p>Price</p>
                 <p>Market Data</p>
               </div>
-              <ChartTime />
+              <ChartTime days={days} setDays={setDays} />
             </div>
 
             <LinearChart data={chartData} />

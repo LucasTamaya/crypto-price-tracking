@@ -1,33 +1,34 @@
-import { useState } from "react";
+interface Props {
+  days: number;
+  setDays: React.Dispatch<React.SetStateAction<number>>;
+}
 
-const ChartTime: React.FC = () => {
-  const [isActive, setIsActive] = useState<number>(0);
-
+const ChartTime: React.FC<Props> = ({ days, setDays }) => {
   const baseParaStyle = "font-bold cursor-pointer";
 
   return (
     <div className="flex flex-row items-center gap-x-4 bg-slate-100/10 p-2 rounded-lg">
       <p
         className={`${baseParaStyle} ${
-          isActive === 0 ? "text-emerald-400" : "text-white"
+          days === 1 ? "text-emerald-400" : "text-white"
         }`}
-        onClick={() => setIsActive(0)}
+        onClick={() => setDays(1)}
       >
         1D
       </p>
       <p
         className={`${baseParaStyle} ${
-          isActive === 1 ? "text-emerald-400" : "text-white"
+          days === 7 ? "text-emerald-400" : "text-white"
         }`}
-        onClick={() => setIsActive(1)}
+        onClick={() => setDays(7)}
       >
         7D
       </p>
       <p
         className={`${baseParaStyle} ${
-          isActive === 2 ? "text-emerald-400" : "text-white"
+          days === 30 ? "text-emerald-400" : "text-white"
         }`}
-        onClick={() => setIsActive(2)}
+        onClick={() => setDays(30)}
       >
         1M
       </p>

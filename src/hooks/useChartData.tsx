@@ -1,5 +1,10 @@
 import axios from "axios";
-import { useQuery, UseQueryResult } from "@tanstack/react-query";
+import {
+  useMutation,
+  useQuery,
+  UseMutationResult,
+  UseQueryResult,
+} from "@tanstack/react-query";
 
 import { COINGECKO_API_URL } from "../constants/apiUrl";
 
