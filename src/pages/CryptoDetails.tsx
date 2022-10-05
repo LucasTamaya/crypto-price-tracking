@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-import ChartTimes from "../components/ChartTimes";
-import ChartTypes from "../components/ChartTypes";
-import LinearChart from "../components/LinearChart";
+import ChartTimes from "../components/chart/ChartTimes";
+import ChartTypes from "../components/chart/ChartTypes";
+import LinearChart from "../components/chart/LinearChart";
 import { useChartData } from "../hooks/useChartData";
 import { ChartDays, ChartType, IChartData } from "../types/chart";
 import { capitalizeFirstLetter } from "../utils/capitalizeFirstLetter";

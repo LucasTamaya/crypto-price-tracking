@@ -1,4 +1,4 @@
-import { ChartType } from "../types/chart";
+import { ChartType } from "../../types/chart";
 
 interface Props {
   chartType: ChartType;

@@ -1,15 +1,12 @@
 import { Line } from "react-chartjs-2";
-// import { Chart as ChartJS, ChartData, ChartOptions, defaults } from "chart.js";
-// import Chart from "chart.js/auto";
 import { Chart, registerables } from "chart.js";
 
-import { IChartData } from "../types/chart";
+import { IChartData } from "../../types/chart";
 
 // to deals with: Uncaught Error: "category" is not a registered scale
 Chart.register(...registerables);
 
 interface Props {
-  // data?: IChartData;
   data: IChartData;
 }
 

@@ -1,4 +1,4 @@
-import { ChartDays } from "../types/chart";
+import { ChartDays } from "../../types/chart";
 
 interface Props {
   chartDays: ChartDays;
@@ -9,32 +9,32 @@ const ChartTimes: React.FC<Props> = ({ chartDays, setChartDays }) => {
   const baseParaStyle = "font-bold cursor-pointer";
 
   return (
-    <div className="flex flex-row items-center gap-x-4 bg-slate-100/10 p-2 rounded-lg">
-      <p
+    <ul className="flex flex-row items-center gap-x-4 bg-slate-100/10 p-2 rounded-lg">
+      <li
         className={`${baseParaStyle} ${
           chartDays === 1 ? "text-emerald-400" : "text-white"
         }`}
         onClick={() => setChartDays(1)}
       >
         1D
-      </p>
-      <p
+      </li>
+      <li
         className={`${baseParaStyle} ${
           chartDays === 7 ? "text-emerald-400" : "text-white"
         }`}
         onClick={() => setChartDays(7)}
       >
         7D
-      </p>
-      <p
+      </li>
+      <li
         className={`${baseParaStyle} ${
           chartDays === 30 ? "text-emerald-400" : "text-white"
         }`}
         onClick={() => setChartDays(30)}
       >
         1M
-      </p>
-    </div>
+      </li>
+    </ul>
   );
 };
 
