@@ -3,7 +3,7 @@ import { Helmet as HelmetStructure } from "react-helmet-async";
 interface Props {
   title: string;
   content: string;
-  path: string;
+  path: string | undefined;
 }
 // component for SEO
 const Helmet: React.FC<Props> = ({ title, content, path }) => {

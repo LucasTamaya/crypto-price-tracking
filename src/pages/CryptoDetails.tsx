@@ -5,6 +5,8 @@ import { ScaleLoader } from "react-spinners";
 import ChartTimes from "../components/chart/ChartTimes";
 import ChartTypes from "../components/chart/ChartTypes";
 import LinearChart from "../components/chart/LinearChart";
+import Helmet from "../components/common/Helmet";
+import { BASE_URL } from "../constants/urls";
 import { useChartData } from "../hooks/useChartData";
 import { ChartDays, ChartType, IChartData } from "../types/chart";
 import { capitalizeFirstLetter } from "../utils/capitalizeFirstLetter";
@@ -25,8 +27,7 @@ const CryptoDetails: React.FC = () => {
   // refetch data if chartDays or chartType change
   useEffect(() => {
     refetch();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [chartDays, chartType]);
+  }, [chartDays, chartType, refetch]);
 
   useEffect(() => {
     if (isSuccess) {
@@ -58,32 +59,42 @@ const CryptoDetails: React.FC = () => {
   }, [isSuccess, data]);
 
   return (
-    <main className="w-full h-screen min-h-screen bg-stone-700 pt-10">
-      <>
-        {isLoading && (
-          <div className="w-full h-[80vh] flex flex-row justify-center items-center">
-            <ScaleLoader color="#34D399" width={10} height={50} />
-          </div>
-        )}
+    <>
+      <Helmet
+        title={`Crypto Tracker - ${capitalizeFirstLetter(id)}`}
+        content={`Get price, market caps and volumes of ${capitalizeFirstLetter(
+          id
+        )}`}
+        path={`${BASE_URL}/crypto/${id}`}
+      />
 
-        {error && <p>Error</p>}
-
-        {isSuccess && chartData && (
-          <>
-            <h2 className="text-center text-emerald-400 text-3xl font-bold mb-10">
-              {capitalizeFirstLetter(id)}
-            </h2>
-
-            <div className="max-w-[1000px] mx-auto mb-2 flex flex-row items-center justify-between">
-              <ChartTypes chartType={chartType} setChartType={setChartType} />
-              <ChartTimes chartDays={chartDays} setChartDays={setChartDays} />
+      <main className="w-full h-[90vh] bg-stone-700 pt-10">
+        <>
+          {isLoading && (
+            <div className="w-full h-[90vh] flex flex-row justify-center items-center">
+              <ScaleLoader color="#34D399" width={10} height={50} />
             </div>
+          )}
 
-            <LinearChart data={chartData} />
-          </>
-        )}
-      </>
-    </main>
+          {error && <p>Error</p>}
+
+          {isSuccess && chartData && (
+            <>
+              <h2 className="text-center text-emerald-400 text-3xl font-bold mb-10">
+                {capitalizeFirstLetter(id)}
+              </h2>
+
+              <div className="max-w-[1000px] mx-auto mb-2 flex flex-row items-center justify-between">
+                <ChartTypes chartType={chartType} setChartType={setChartType} />
+                <ChartTimes chartDays={chartDays} setChartDays={setChartDays} />
+              </div>
+
+              <LinearChart data={chartData} />
+            </>
+          )}
+        </>
+      </main>
+    </>
   );
 };
 

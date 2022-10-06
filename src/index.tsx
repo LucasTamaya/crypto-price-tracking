@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 import "./style/index.css";
 import App from "./App";
+import { HelmetProvider } from "react-helmet-async";
 
 const queryClient = new QueryClient();
 
@@ -16,7 +17,9 @@ root.render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
       <Router>
-        <App />
+        <HelmetProvider>
+          <App />
+        </HelmetProvider>
       </Router>
     </QueryClientProvider>
   </React.StrictMode>

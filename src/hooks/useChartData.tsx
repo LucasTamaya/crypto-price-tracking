@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useQuery, UseQueryResult } from "@tanstack/react-query";
 
-import { COINGECKO_API_URL } from "../constants/apiUrl";
+import { COINGECKO_API_URL } from "../constants/urls";
 import { ChartDays, ChartType } from "../types/chart";
 
 type DataPoint = [number, number];
@@ -24,16 +24,6 @@ const fetchChartData = async (
     default:
       return data.total_volumes;
   }
-
-  // if (type === "prices") {
-  //   return data.prices;
-  // }
-
-  // if (type === "market_caps") {
-  //   return data.market_caps;
-  // } else {
-  //   return data.total_volumes;
-  // }
 };
 
 export const useChartData = (
