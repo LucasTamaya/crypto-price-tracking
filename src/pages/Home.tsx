@@ -1,3 +1,5 @@
+import { ScaleLoader } from "react-spinners";
+
 import CryptoCard from "../components/crypto/CryptoCard";
 import { useCryptoData } from "../hooks/useCryptoData";
 
@@ -7,12 +9,16 @@ const Home: React.FC = () => {
   return (
     <main className="w-full h-full min-h-screen bg-stone-700 pt-10">
       <>
-        {isLoading && <p>Loading ...</p>}
+        {isLoading && (
+          <div className="w-full h-[80vh] flex flex-row justify-center items-center">
+            <ScaleLoader color="#34D399" width={10} height={50} />
+          </div>
+        )}
 
         {error && <p>Error</p>}
 
         {isSuccess && (
-          <main>
+          <>
             <h2 className="text-center text-emerald-400 text-3xl font-bold mb-10">
               Top 100
             </h2>
@@ -39,7 +45,7 @@ const Home: React.FC = () => {
                 )
               )}
             </ul>
-          </main>
+          </>
         )}
       </>
     </main>

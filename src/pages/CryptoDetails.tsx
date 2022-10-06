@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { ScaleLoader } from "react-spinners";
 
 import ChartTimes from "../components/chart/ChartTimes";
 import ChartTypes from "../components/chart/ChartTypes";
@@ -59,7 +60,11 @@ const CryptoDetails: React.FC = () => {
   return (
     <main className="w-full h-screen min-h-screen bg-stone-700 pt-10">
       <>
-        {isLoading && <p>Loading ...</p>}
+        {isLoading && (
+          <div className="w-full h-[80vh] flex flex-row justify-center items-center">
+            <ScaleLoader color="#34D399" width={10} height={50} />
+          </div>
+        )}
 
         {error && <p>Error</p>}
 
