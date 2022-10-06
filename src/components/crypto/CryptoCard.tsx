@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-import { ICrypto } from "../types/crypto";
+import { ICrypto } from "../../types/crypto";
 
 const CryptoCard: React.FC<ICrypto> = ({
   id,

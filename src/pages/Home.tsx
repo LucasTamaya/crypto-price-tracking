@@ -1,6 +1,4 @@
-import { useEffect } from "react";
-import CryptoCard from "../components/CryptoCard";
-import { COINGECKO_API_URL } from "../constants/apiUrl";
+import CryptoCard from "../components/crypto/CryptoCard";
 import { useCryptoData } from "../hooks/useCryptoData";
 
 const Home: React.FC = () => {
