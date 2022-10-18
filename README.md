@@ -1,17 +1,19 @@
-# React Starter Template
+# Crypto Price Tracking 
 
-
+I'm a big fan of crypto-currencies so I created this project where you can access to the top 100 crypto of the actual market. You can also see more details about a specific crypto in graphical form.
 
 ## Technologies
-
-- React
-- TypeScript
+- React JS
+- Typescript
 - Tailwind CSS
-- ESLint 
-- Prettier
+- Chart JS and React-ChartJS-2
+- Jest
 
-## How to use it
-
+## To run the app
 ```
-git clone https://github.com/LucasTamaya/react-starter-template.git
+npm run start
+```
+or
+```
+yarn start
 ```
